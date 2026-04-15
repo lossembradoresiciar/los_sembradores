@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Los Sembradores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+    <!-- Estilos -->
+    <style>
+        body {
+            scroll-behavior: smooth;
+        }
+
+        .hero {
+            background: url('img/PORTADA.jpg') center/cover no-repeat;
+            height: 85vh;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            padding-top: 1px;
+            padding-bottom: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+
+                <a class="navbar-brand d-flex align-items-center text-white" href="#">
+                    <img src="img/LOGO SOCIEDAD.png" style="height:70px; margin-right:10px;">
+                    <span class="fw-bold">Los Sembradores</span>
+                </a>
+
+            </div>
+        </nav>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="overlay">
+                <h1 class="display-4">{{ mensaje }}</h1>
+                <p class="lead">Una generación que crece en fe</p>
+            </div>
+        </section>
+
+        <!-- MISIÓN / VISIÓN -->
+        <section class="container py-5 text-center">
+            <h2>Misión</h2>
+            <p>{{ mision }}</p>
+
+            <h2 class="mt-4">Visión</h2>
+            <p>{{ vision }}</p>
+        </section>
+
+        <!-- GALERÍA -->
+        <section class="container py-5">
+            <h2 class="text-center mb-4">Galería</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3" v-for="img in galeria" :key="img">
+                    <img :src="img" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </section>
+
+        <!-- HORARIOS -->
+        <section class="bg-light py-5">
+            <div class="container text-center">
+                <h2>Horarios</h2>
+                <ul class="list-group mt-3">
+                    <li class="list-group-item" v-for="h in horarios" :key="h">
+                        {{ h }}
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- UBICACIÓN -->
+        <section class="container py-5 text-center">
+            <h2>Ubicación</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." width="100%" height="300" style="border:0;"
+                allowfullscreen="" loading="lazy">
+            </iframe>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-dark text-white text-center py-3">
+            <p>© 2026 {{ titulo }} - Todos los derechos reservados</p>
+        </footer>
+
+    </div>
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    mensaje: "Bienvenidos a nuestra sociedad juvenil",
+                    mision: "Guiar a los jóvenes a crecer espiritualmente y fortalecer su relación con Dios.",
+                    vision: "Ser una generación comprometida con Cristo que impacte su entorno.",
+                    horarios: [
+                        "Viernes - Reunión juvenil 7:00 PM",
+                        "Domingo - Servicio general 10:00 AM"
+                    ],
+                    galeria: [
+                        "https://images.unsplash.com/photo-1529070538774-1843cb3265df",
+                        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+                        "https://images.unsplash.com/photo-1492724441997-5dc865305da7"
+                    ]
+                }
+            }
+        }).mount('#app');
+    </script>
+
+</body>
+
+</html>
